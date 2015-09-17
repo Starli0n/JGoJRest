@@ -4,7 +4,6 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
-    "log"
     "net/http"
 
     "github.com/gorilla/mux"
@@ -34,19 +33,11 @@ func TodoShow(w http.ResponseWriter, r *http.Request) {
 }
 
 func Swagger(w http.ResponseWriter, r *http.Request) {
-    vars := mux.Vars(r)
-    swagger := vars["swagger"]
-    if swagger != "swagger.json" {
-        w.WriteHeader(http.StatusNotFound)
-        log.Printf("%s", swagger)
-        return
-    }
-
     w.Header().Set("Content-Type", "application/json; charset=UTF-8")
     w.Header().Set("Access-Control-Allow-Origin", "*")
     //w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT")
     w.WriteHeader(http.StatusOK)
-    s, err := ioutil.ReadFile(swagger)
+    s, err := ioutil.ReadFile("swagger.json")
     if err != nil {
         panic(err)
     }
