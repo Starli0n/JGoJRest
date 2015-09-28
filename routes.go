@@ -33,7 +33,7 @@ var routes = Routes{
     Route{
         "Swagger",
         "GET",
-        "/v2/{swagger}",
+        "/v2/swagger",
         Swagger,
     },
 }

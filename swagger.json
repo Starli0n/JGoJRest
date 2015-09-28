@@ -1,0 +1,94 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "description":"The purpose of this application is to provide an application\nthat is using plain go code to define a RESTful API",
+        "title":"JGoJRest API.",
+        "contact":{
+            "name":"Starli0n Thundercats",
+            "url":"http://starli0n.thundercats.com",
+            "email":"Starli0n@users.noreply.github.com"
+        },
+        "license":{
+            "name":"MIT",
+            "url":"http://opensource.org/licenses/MIT"
+        },
+        "version":"0.0.1"
+    },
+    "host":"localhost:8080",
+    "basePath":"/",
+    "schemes":[
+        "http",
+        "https"
+    ],
+    "consumes":[
+        "application/json"
+    ],
+    "produces":[
+        "application/json"
+    ],
+    "paths":{
+        "/todos":{
+            "get":{
+                "tags":[
+                    "todos"
+                ],
+                "summary":"Show the list",
+                "description":"",
+                "operationId":"todos",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Status OK"
+                    }
+                }
+            }
+        },
+        "/todos/{todoId}":{
+            "get":{
+                "tags":[
+                    "todos"
+                ],
+                "summary":"Find a todo by Id",
+                "description":"Return a single todo",
+                "operationId":"getTodoById",
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "todosId",
+                        "in": "path",
+                        "description": "ID of todo to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Status OK"
+                    }
+                }
+            }
+        }
+    },
+    "tags":[
+        {
+            "name":"welcome",
+            "description":"Welcome Page"
+        },
+        {
+            "name":"todos",
+            "description":"Todos list"
+        }
+    ],
+    "externalDocs":{
+        "description":"Source on GitHub",
+        "url":"https://github.com/Starli0n/JGoJRest"
+    }
+}
